@@ -13,6 +13,9 @@ var routes = require('./routes/index');
 var shares = require('./routes/shares');
 var markets = require('./routes/markets');
 
+// Task runner
+var taskRunner = require('./taskRunner.js');
+
 var app = express();
 app.set('port', process.env.PORT || 3000);
 
@@ -65,3 +68,6 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+// Start pulling data from source
+taskRunner.start();
